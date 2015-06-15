@@ -2,12 +2,15 @@
 
 The Gradle Bintray Plugin allows you to publish artifacts to a repository on [bintray](https://bintray.com/).
 
+The plugin adds the `bintrayUpload` task to your projects, which allows you to upload to bintray and optionally create
+the target package and version. Artifacts can be uploaded from the specified configurations or (the newly supported) publications
+
 [ ![Download](https://api.bintray.com/packages/jfrog/jfrog-jars/gradle-bintray-plugin/images/download.svg) ](https://bintray.com/jfrog/jfrog-jars/gradle-bintray-plugin/_latestVersion)
 
 # Getting Started Using the Plugin
 The following steps add the Gradle Bintray Plugin to your Gradle build script.
 
-#### Step 1: Define user and key for [bintray](https://bintray.com/)
+#### Step 1: [Sign up](https://bintray.com/docs/usermanual/working/working_allaboutjoiningbintraysigningupandloggingin.html) and define user and key for [bintray](https://bintray.com/)
 
 #### Step 2: Add Bintray Plugin to your Gradle build script. 
 
@@ -27,7 +30,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.1'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2'
     }
 }
 apply plugin: 'com.jfrog.bintray'
@@ -62,9 +65,37 @@ bintray {
 }
 ```
 
-#### Step 4: Define publications section in your `build.gradle` file.
+#### Step 4: Define the publications closure in your `build.gradle` file.
 
 Please advise that this is currently working only with Maven Publications.
+
+This can be done either by defining maven POM parameters:
+
+```groovy
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java
+			groupId 'org.jfrog.gradle.sample'
+			artifactId 'gradle-project'
+			version '1.1'
+		}
+	}
+}
+```
+
+Or by taking the POM parameters directly from the project definition:
+
+```groovy
+allprojects {
+  repositories {
+      jcenter()
+  }
+  group = 'org.jfrog.example.gradle'
+  version = '1.1'
+  status = 'integration'
+}
+```
 
 ```groovy
 publishing {
@@ -78,6 +109,7 @@ publishing {
 	}
 }
 ```
+
 
 #### Step 5: Add the defined publication from step '4' and Package information inside the "bintray" closure.
 
@@ -96,8 +128,8 @@ bintray {
     key = 'bintray_api_key'
     publications = ['mavenJava']
     pkg {
-    		repo = 'generic'
-    		name = 'gradle-project'
+		repo = 'generic'
+		name = 'gradle-project'
 		userOrg = 'bintray_user'
 		licenses = ['Apache-2.0']
 		vcsUrl = 'https://github.com/bintray/gradle-bintray-plugin.git'
@@ -109,12 +141,9 @@ bintray {
 
 gradle build bintrayUpload
 
-# Tasks
-The plugin adds the `bintrayUpload` task to your projects, which allows you to upload to bintray and optionally create
-the target package and version.
-Artifacts can be uploaded from the specified configurations or (the newly supported) publications.
-
-## Configuration
+## The Bintray Plugin DSL
+The Gradle Bintray plugin can be configured using its own Convention DSL inside the build.gradle script of your root project.
+The syntax of the Convention DSL is described below:
 
 ### build.gradle
 ```groovy
