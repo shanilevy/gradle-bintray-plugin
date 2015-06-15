@@ -1,9 +1,6 @@
 # Overview
 
-The Gradle Bintray Plugin allows you to publish artifacts to a repository on [bintray](https://bintray.com/).
-
-The plugin adds the `bintrayUpload` task to your projects, which allows you to upload to bintray and optionally create
-the target package and version. Artifacts can be uploaded from the specified configurations or (the newly supported) publications
+The Gradle Bintray Plugin add the `bintrayUpload` task to your projects and allows you to publish artifacts to a repository on [bintray](https://bintray.com/). Artifacts can be uploaded from the specified configurations or (the newly supported) publications
 
 [ ![Download](https://api.bintray.com/packages/jfrog/jfrog-jars/gradle-bintray-plugin/images/download.svg) ](https://bintray.com/jfrog/jfrog-jars/gradle-bintray-plugin/_latestVersion)
 
@@ -12,7 +9,7 @@ The following steps add the Gradle Bintray Plugin to your Gradle build script.
 
 #### Step 1: [Sign up](https://bintray.com/docs/usermanual/working/working_allaboutjoiningbintraysigningupandloggingin.html) and define user and key for [bintray](https://bintray.com/)
 
-#### Step 2: Add Bintray Plugin to your Gradle build script. 
+#### Step 2: Apply Bintray Plugin to your Gradle build script. 
 
 Depending on the version of Gradle you're running, there are different usage scenarios. Add one of the following snippets to your `build.gradle` file:
 
@@ -45,7 +42,7 @@ Java 6 and above.
 
 #### Step 3: Add the "bintray" closure to your `build.gradle` file.
 
-Add the bellow "bintray" closure, adding your bintray user name and key.
+Add the below "bintray" closure with your bintray user name and key.
 
 You can do it either explicitly:
 
@@ -67,7 +64,7 @@ bintray {
 
 #### Step 4: Define the publications closure in your `build.gradle` file.
 
-Please advise that this is currently working only with Maven Publications.
+Please advise that this is currently working **only** with Maven Publications.
 
 This can be done either by defining maven POM parameters:
 
