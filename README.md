@@ -112,11 +112,11 @@ publishing {
 
 The following package parameters are mandatory:
 
-1. Existing repository in bintray to add the artifacts to (for example: 'generic', 'maven' etc).
-2. name for the project
-3. userOrg – if not added will use 'BINTRAY_USER' by default
-4. License
-5. VCS URL
+1. repo - existing repository in bintray to add the artifacts to (for example: 'generic', 'maven' etc).
+2. name - name for the project
+3. userOrg – an optional organization name when the repo belongs to one of the user's orgs. If not added will use 'BINTRAY_USER' by default.
+4. licenses
+5. vcsUrl
 
 
 ```groovy
