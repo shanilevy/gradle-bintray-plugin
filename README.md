@@ -137,9 +137,23 @@ bintray {
 }
 ```
 
-#### Step X: Run the build
+#### Step 6: Add a version information inside the "bintray" closure.
 
-gradle build bintrayUpload
+In case of defining this, it will override the version stated in the POM xml file and will set the version number in bintray.
+
+```groovy
+version {
+            name = '1.0-Final' //Bintray logical version name
+            desc = //Optional - Version-specific description'
+            released  = //Optional - Date of the version release. 2 possible values: date in the format of 'yyyy-MM-dd'T'HH:mm:ss.SSSZZ' OR a java.util.Date instance
+            vcsTag = '1.3.0'
+            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin'] //Optional version-level attributes
+        }
+```
+
+#### Step 7: Run the build
+
+> gradle build bintrayUpload
 
 ## The Bintray Plugin DSL
 The Gradle Bintray plugin can be configured using its own Convention DSL inside the build.gradle script of your root project.
