@@ -34,17 +34,9 @@ buildscript {
 apply plugin: 'com.jfrog.bintray'
 ```
 
-**Gradle Compatibility:**
-When using Gradle publications or when using `filesSpec` for direct file uploads, you'll need to use Gradle 2.x; Otherwise, the plugin is compatible with Gradle 1.12 and above.
-
- **JVM Compatibility:**
-Java 6 and above.
-
 #### Step 3: Add the "bintray" closure to your `build.gradle` file.
 
 Add the below "bintray" closure with your bintray user name and key.
-
-You can do it either explicitly:
 
 ```groovy
 bintray {
@@ -53,7 +45,8 @@ bintray {
 }
 ```
 
-Or by using environment variables: 'BINTRAY_USER' and 'BINTRAY_KEY':
+In case you prefer not to have your Bintray credentials explicitly defined in the script,
+you can store them in environment variables and use them as follows:
 
 ```groovy
 bintray {
@@ -62,7 +55,37 @@ bintray {
 }
 ```
 
-#### Step 4: Define the publications closure in your `build.gradle` file.
+
+#### Step 4: Add your Bintray package information to the "bintray" closure.
+
+Mandatory parameters:
+
+1. repo - existing repository in bintray to add the artifacts to (for example: 'generic', 'maven' etc).
+2. name - package name
+3. licenses - your package licenses
+4. vcsUrl - your VCS URL
+
+Optional parameters:
+
+1. userOrg – an optional organization name when the repo belongs to one of the user's orgs. If not added will use 'BINTRAY_USER' by default.
+
+```groovy
+bintray {	
+    user = 'bintray_user'
+    key = 'bintray_api_key'
+    pkg {
+		repo = 'generic'
+		name = 'gradle-project'
+		userOrg = 'bintray_user'
+		licenses = ['Apache-2.0']
+		vcsUrl = 'https://github.com/bintray/gradle-bintray-plugin.git'
+    	}
+}
+```
+
+
+
+#### Step 5: Define the publications closure in your `build.gradle` file.
 
 Please advise that this is currently working **only** with Maven Publications.
 
@@ -107,32 +130,6 @@ publishing {
 }
 ```
 
-
-#### Step 5: Add the defined publication from step '4' and Package information inside the "bintray" closure.
-
-The following package parameters are mandatory:
-
-1. repo - existing repository in bintray to add the artifacts to (for example: 'generic', 'maven' etc).
-2. name - name for the project
-3. userOrg – an optional organization name when the repo belongs to one of the user's orgs. If not added will use 'BINTRAY_USER' by default.
-4. licenses
-5. vcsUrl
-
-
-```groovy
-bintray {	
-    user = 'bintray_user'
-    key = 'bintray_api_key'
-    publications = ['mavenJava']
-    pkg {
-		repo = 'generic'
-		name = 'gradle-project'
-		userOrg = 'bintray_user'
-		licenses = ['Apache-2.0']
-		vcsUrl = 'https://github.com/bintray/gradle-bintray-plugin.git'
-    	}
-}
-```
 
 #### Step 6: Add a version information inside the "bintray" closure.
 
