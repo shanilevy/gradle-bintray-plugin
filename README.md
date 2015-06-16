@@ -1,17 +1,17 @@
 # Overview
 
-The Gradle Bintray Plugin add the `bintrayUpload` task to your projects and allows you to publish artifacts to a repository on [bintray](https://bintray.com/). Artifacts can be uploaded from the specified configurations or (the newly supported) publications
+The Gradle Bintray Plugin allows you to publish artifacts to Bintray.
 
 [ ![Download](https://api.bintray.com/packages/jfrog/jfrog-jars/gradle-bintray-plugin/images/download.svg) ](https://bintray.com/jfrog/jfrog-jars/gradle-bintray-plugin/_latestVersion)
 
 # Getting Started Using the Plugin
-The following steps add the Gradle Bintray Plugin to your Gradle build script.
+Please follow the below steps to add the Gradle Bintray Plugin to your Gradle build script.
 
-#### Step 1: [Sign up](https://bintray.com/docs/usermanual/working/working_allaboutjoiningbintraysigningupandloggingin.html) and define user and key for [bintray](https://bintray.com/)
+#### Step 1: [Sign up](https://bintray.com/docs/usermanual/working/working_allaboutjoiningbintraysigningupandloggingin.html) and define user and key for [Bintray](https://bintray.com/)
 
-#### Step 2: Apply Bintray Plugin to your Gradle build script. 
+#### Step 2: Apply the plugin to your Gradle build script. 
 
-Depending on the version of Gradle you're running, there are different usage scenarios. Add one of the following snippets to your `build.gradle` file:
+To apply the plugin, please add one of the following snippets to your `build.gradle` file:
 
 ###### Gradle >= 2.1
 ```groovy
@@ -19,6 +19,7 @@ plugins {
     id "com.jfrog.bintray" version "1.2"
 }
 ```
+* Currently the "plugins" notation cannot be used for applying the plugin for sub projects, when used from the root build script.
 
 ###### Gradle < 2.1
 ```groovy
@@ -32,7 +33,6 @@ buildscript {
 }
 apply plugin: 'com.jfrog.bintray'
 ```
-* make sure the plugin exists for every sub-project
 
 **Gradle Compatibility:**
 When using Gradle publications or when using `filesSpec` for direct file uploads, you'll need to use Gradle 2.x; Otherwise, the plugin is compatible with Gradle 1.12 and above.
