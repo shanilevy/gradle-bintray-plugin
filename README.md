@@ -61,9 +61,9 @@ bintray {
 Mandatory parameters:
 
 1. repo - existing repository in bintray to add the artifacts to (for example: 'generic', 'maven' etc).
-2. name - package name
-3. licenses - your package licenses
-4. vcsUrl - your VCS URL
+2. name - package name.
+3. licenses - your package licenses.
+4. vcsUrl - your VCS URL.
 
 Optional parameters:
 
@@ -86,15 +86,28 @@ bintray {
 
 #### Step 5: Add a version information to the "pkg" closure.
 
+Mandatory parameters:
+
+1. name - Version name.
+
+Optional parameters:
+
+1. desc - Version description.
+2. released - Date of the version release. Can accept one of the following formats: 
+	* Date in the format of 'yyyy-MM-dd'T'HH:mm:ss.SSSZZ'
+	* java.util.Date instance
+3. vcsTag - Version control tag name.
+4. attributes - Attributes to be attached to the version.
+	
 
 ```groovy
 pkg {
 	version {
-	            name = '1.0-Final' //Bintray logical version name
-	            desc = //Optional - Version-specific description'
-	            released  = //Optional - Date of the version release. 2 possible values: date in the format of 'yyyy-MM-dd'T'HH:mm:ss.SSSZZ' OR a java.util.Date instance
+	            name = '1.0-Final'
+	            desc = 'Gradle Bintray Plugin 1.0 final'
+	            released  = new Date()
 	            vcsTag = '1.3.0'
-	            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin'] //Optional version-level attributes
+	            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
         }
 }
 ```
