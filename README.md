@@ -117,7 +117,7 @@ pkg {
 
 Gradle introduces two methods to create groups of artifacts: Publications and Configurations.
 
-Both [Publications](https://docs.gradle.org/current/dsl/org.gradle.api.publish.maven.MavenPublication.html) and [Configurations](https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.Configuration.html) and Maven  can group artifacts to be uploaded to Bintray.
+Both [Maven Publications](https://docs.gradle.org/current/dsl/org.gradle.api.publish.maven.MavenPublication.html) and [Configurations](https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.Configuration.html) can group artifacts to be uploaded to Bintray.
 The Maven Publications or Configurations should be added to the Gradle script, outside of the bintray closure.
 They should however be referenced from inside the bintray closure.
 
