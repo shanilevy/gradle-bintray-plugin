@@ -148,7 +148,7 @@ bintray {
 }
 ```
 
-** [Example project](https://github.com/bintray/bintray-examples/tree/master/gradle-bintray-plugin-examples/gradle-bintray-plugin-publications-example) for using Maven Publications.
+* [Example project](https://github.com/bintray/bintray-examples/tree/master/gradle-bintray-plugin-examples/gradle-bintray-plugin-publications-example) for using Maven Publications.
 
 As for using Configurations - the following example uses the archives Configuration by applying the java plugin
 
@@ -165,7 +165,7 @@ bintray {
 }
 ```
 
-** [Example project](https://github.com/bintray/bintray-examples/tree/master/gradle-bintray-plugin-examples/gradle-bintray-plugin-configurations-example) for using Configurations.
+* [Example project](https://github.com/bintray/bintray-examples/tree/master/gradle-bintray-plugin-examples/gradle-bintray-plugin-configurations-example) for using Configurations.
 
 #### Step 7: Run the build
 
