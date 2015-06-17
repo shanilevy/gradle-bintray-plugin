@@ -113,9 +113,17 @@ pkg {
 ```
 
 
-#### Step 5: Define the publications closure in your `build.gradle` file.
+#### Step 6: Define artifacts to be uploaded to Bintray
 
-Please advise that this is currently working **only** with Maven Publications.
+Gradle introduces two methods to create groups of artifacts: Configurations and Publications.
+
+Both Configurations and Publications can group artifacts to be uploaded to Bintray.
+The Configurations or Publications should be added to the Gradle script, outside of the bintray closure.
+They should however be referenced from inside the bintray closure.
+
+A [MavenPublication](https://docs.gradle.org/current/dsl/org.gradle.api.publish.maven.MavenPublication.html) is the representation of how Gradle should publish something in Maven format.
+
+* Please advise that this is currently working **only** with Maven Publications.
 
 This can be done either by defining maven POM parameters:
 
