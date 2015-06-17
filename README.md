@@ -123,7 +123,7 @@ They should however be referenced from inside the bintray closure.
 
 * Please note that Ivy Publications are not supported.
 
-Here's an example for a Maven Publication that can be added to your Gradle script:
+Below you can find an example for Maven Publication that can be added to your Gradle script:
 
 ```groovy
 publishing {
@@ -148,12 +148,14 @@ bintray {
 }
 ```
 
-As for using Configurations, if for example, you are using the archives Configuration by applying the java plugin
+** [Example project](https://github.com/bintray/bintray-examples/tree/master/gradle-bintray-plugin-examples/gradle-bintray-plugin-publications-example) for using Maven Publications.
+
+As for using Configurations - the following example uses the archives Configuration by applying the java plugin
 
 ```groovy
 apply plugin: 'java'
 ```
-Then the Configuration should be referenced from the bintray closure as follows:
+and the Configuration should be referenced from the bintray closure as follows:
 
 ```groovy
 bintray {
@@ -162,6 +164,8 @@ bintray {
     configurations = ['archives']
 }
 ```
+
+** [Example project](https://github.com/bintray/bintray-examples/tree/master/gradle-bintray-plugin-examples/gradle-bintray-plugin-configurations-example) for using Configurations.
 
 #### Step 7: Run the build
 
@@ -224,7 +228,7 @@ bintray {
     }
 }
 ```
-* As an example, you can also refer to these sample projects [build file](https://github.com/bintray/bintray-examples/tree/master/gradle-bintray-plugin-examples).
+* As an example, you can also refer to these [sample projects](https://github.com/bintray/bintray-examples/tree/master/gradle-bintray-plugin-examples).
 
 **Gradle Compatibility:**
 When using Gradle publications or when using `filesSpec` for direct file uploads, you'll need to use Gradle 2.x; Otherwise, the plugin is compatible with Gradle 1.12 and above.
