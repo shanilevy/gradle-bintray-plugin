@@ -165,7 +165,7 @@ bintray {
 
 #### Step 7: Run the build
 
-> gradle build bintrayUpload
+> gradle bintrayUpload
 
 ## The Bintray Plugin DSL
 The Gradle Bintray plugin can be configured using its own Convention DSL inside the build.gradle script of your root project.
@@ -224,7 +224,13 @@ bintray {
     }
 }
 ```
-* As an example, you can also refer to this multi-module sample project [build file](https://github.com/bintray/bintray-examples/blob/master/gradle-multi-example/build.gradle).
+* As an example, you can also refer to these sample projects [build file](https://github.com/bintray/bintray-examples/tree/master/gradle-bintray-plugin-examples).
+
+**Gradle Compatibility:**
+When using Gradle publications or when using `filesSpec` for direct file uploads, you'll need to use Gradle 2.x; Otherwise, the plugin is compatible with Gradle 1.12 and above.
+
+**JVM Compatibility:**
+Java 6 and above.
 
 # License
 This plugin is available under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
