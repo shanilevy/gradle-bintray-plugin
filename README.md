@@ -121,7 +121,11 @@ Both Configurations and Publications can group artifacts to be uploaded to Bintr
 The Configurations or Publications should be added to the Gradle script, outside of the bintray closure.
 They should however be referenced from inside the bintray closure.
 
+A [Configuration] represents a group of artifacts and their dependencies
+
 A [MavenPublication](https://docs.gradle.org/current/dsl/org.gradle.api.publish.maven.MavenPublication.html) is the representation of how Gradle should publish something in Maven format.
+
+A [Configuration](https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.Configuration.html) represents a group of artifacts and their dependencies.
 
 * Please advise that this is currently working **only** with Maven Publications.
 
@@ -137,6 +141,16 @@ publishing {
 			version '1.1'
 		}
 	}
+}
+```
+
+```groovy
+bintray {
+    user = 'bintray_user'
+    key = 'bintray_api_key'	
+    configurations = ['deployables'] //When uploading configuration files
+    // - OR -
+    publications = ['mavenJava'] //When uploading Maven-based publication files
 }
 ```
 
