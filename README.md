@@ -115,24 +115,20 @@ pkg {
 
 #### Step 6: Define artifacts to be uploaded to Bintray
 
-Gradle introduces two methods to create groups of artifacts: Configurations and Publications.
+Gradle introduces two methods to create groups of artifacts: Publications and Configurations.
 
-Both Configurations and Publications can group artifacts to be uploaded to Bintray.
-The Configurations or Publications should be added to the Gradle script, outside of the bintray closure.
+Both [Publications](https://docs.gradle.org/current/dsl/org.gradle.api.publish.maven.MavenPublication.html) and [Configurations](https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.Configuration.html) and Maven  can group artifacts to be uploaded to Bintray.
+The Maven Publications or Configurations should be added to the Gradle script, outside of the bintray closure.
 They should however be referenced from inside the bintray closure.
 
-A [Configuration](https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.Configuration.html) represents a group of artifacts and their dependencies.
+* Please note that Ivy Publications are not supported.
 
-A [MavenPublication](https://docs.gradle.org/current/dsl/org.gradle.api.publish.maven.MavenPublication.html) is the representation of how Gradle should publish something in Maven format.
-
-* Please advise that this is currently working **only** with Maven Publications.
-
-This can be done either by defining maven POM parameters:
+Here's an example for a Maven Publication that can be added to your Gradle script:
 
 ```groovy
 publishing {
 	publications {
-		mavenJava(MavenPublication) {
+		MyPublication(MavenPublication) {
 			from components.java
 			groupId 'org.jfrog.gradle.sample'
 			artifactId 'gradle-project'
@@ -142,39 +138,28 @@ publishing {
 }
 ```
 
+This Publication should be referenced from the bintray closure as follows:
+
 ```groovy
 bintray {
     user = 'bintray_user'
     key = 'bintray_api_key'	
-    configurations = ['deployables'] //When uploading configuration files
-    // - OR -
-    publications = ['mavenJava'] //When uploading Maven-based publication files
+    publications = ['MyPublication'] 
 }
 ```
 
-Or by taking the POM parameters directly from the project definition:
+As for using Configurations, if for example, you are using the archives Configuration by applying the java plugin
 
 ```groovy
-allprojects {
-  repositories {
-      jcenter()
-  }
-  group = 'org.jfrog.example.gradle'
-  version = '1.1'
-  status = 'integration'
-}
+apply plugin: 'java'
 ```
+Then the Configuration should be referenced from the bintray closure as follows:
 
 ```groovy
-publishing {
-	publications {
-		mavenJava(MavenPublication) {
-			from components.java
-			pom.withXml {
-				asNode().appendNode('description', 'A demonstration of Maven POM customization')
-			}
-		}
-	}
+bintray {
+    user = 'bintray_user'
+    key = 'bintray_api_key'	
+    configurations = ['archives']
 }
 ```
 
