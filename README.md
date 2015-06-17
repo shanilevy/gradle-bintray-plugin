@@ -236,6 +236,9 @@ When using Gradle publications or when using `filesSpec` for direct file uploads
 **JVM Compatibility:**
 Java 6 and above.
 
+# Example Projects
+As an example, you can also refer to these [sample projects](https://github.com/bintray/bintray-examples/tree/master/gradle-bintray-plugin-examples).
+
 # License
 This plugin is available under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
