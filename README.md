@@ -132,6 +132,8 @@ bintray {
 }
 ```
 
+* [Example project](https://github.com/bintray/bintray-examples/tree/master/gradle-bintray-plugin-examples/gradle-bintray-plugin-filesSpec-example) for using filesSpec.
+
 Both [Maven Publications](https://docs.gradle.org/current/dsl/org.gradle.api.publish.maven.MavenPublication.html) and [Configurations](https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.Configuration.html) can group artifacts to be uploaded to Bintray.
 The Maven Publications or Configurations should be added to the Gradle script, outside of the bintray closure.
 They should however be referenced from inside the bintray closure.
