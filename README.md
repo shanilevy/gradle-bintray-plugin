@@ -115,7 +115,16 @@ pkg {
 
 #### Step 6: Define artifacts to be uploaded to Bintray
 
-Gradle introduces two methods to create groups of artifacts: Publications and Configurations.
+Gradle introduces three methods to create groups of artifacts: Copy specific files using filesSpec, Publications and Configurations.
+
+FilesSpec is following [gradle copySpec](https://docs.gradle.org/current/javadoc/org/gradle/api/file/CopySpec.html) which is used by the copy task.
+
+Below you can find an example for uploading any arbitrary files using filesSpec that can be added to your Gradle script:
+
+filesSpec {
+        from 'arbitrary-files'
+        into '.'
+    }
 
 Both [Maven Publications](https://docs.gradle.org/current/dsl/org.gradle.api.publish.maven.MavenPublication.html) and [Configurations](https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.Configuration.html) can group artifacts to be uploaded to Bintray.
 The Maven Publications or Configurations should be added to the Gradle script, outside of the bintray closure.
