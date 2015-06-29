@@ -123,7 +123,7 @@ Below you can find an example for uploading any arbitrary files using filesSpec 
 
 ```groovy
 filesSpec {
-        from 'arbitrary-files'
+        from 'build/libs'
         into '.'
     }
 ```
