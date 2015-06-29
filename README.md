@@ -117,15 +117,19 @@ pkg {
 
 Gradle introduces three methods to create groups of artifacts: Copy specific files using filesSpec, Publications and Configurations.
 
-FilesSpec is following [gradle copySpec](https://docs.gradle.org/current/javadoc/org/gradle/api/file/CopySpec.html) which is used by the copy task.
+FilesSpec is following [gradle's copySpec](https://docs.gradle.org/current/javadoc/org/gradle/api/file/CopySpec.html) which is used by the copy task.
 
-Below you can find an example for uploading any arbitrary files using filesSpec that can be added to your Gradle script:
+Below you can find an example for uploading any arbitrary files using filesSpec that should be referenced from the bintray closure as follows:
 
 ```groovy
-filesSpec {
-        from 'build/libs'
-        into '.'
+bintray {
+    user = 'bintray_user'
+    key = 'bintray_api_key'
+    filesSpec {
+	 from 'build/libs'
+	 into '.'
     }
+}
 ```
 
 Both [Maven Publications](https://docs.gradle.org/current/dsl/org.gradle.api.publish.maven.MavenPublication.html) and [Configurations](https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.Configuration.html) can group artifacts to be uploaded to Bintray.
