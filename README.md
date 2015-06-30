@@ -33,7 +33,7 @@ buildscript {
 }
 apply plugin: 'com.jfrog.bintray'
 ```
-Note: if you have a multi project build make sure to apply the plugin and the plugin configuration to every project which artifacts you wish to publish to bintray.
+* If you have a multi project build make sure to apply the plugin and the plugin configuration to every project which its artifacts you wish to publish to bintray.
 
 #### Step 3: Add the `bintray` configuration closure to your `build.gradle` file
 
@@ -118,15 +118,16 @@ pkg {
 
 #### Step 6: Define artifacts to be uploaded to Bintray
 
-The plugin supports three methods to create groups of artifacts: Configurations, Publications and Copying specific files using filesSpec.
+The plugin supports three methods to create groups of artifacts: Configurations, Publications and Copying specific files using filesSpec. All three methods used to group artifacts to be uploaded to Bintray.
 
-Both [Maven Publications](https://docs.gradle.org/current/dsl/org.gradle.api.publish.maven.MavenPublication.html) and [Configurations](https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.Configuration.html) can group artifacts to be uploaded to Bintray.
 The Maven Publications or Configurations should be added to the Gradle script, outside of the bintray closure.
 They should however be referenced from inside the bintray closure.
 
 * Please note that Ivy Publications are not supported.
 
-1. Maven Publications - Below you can find an example for Maven Publication that can be added to your Gradle script:
+1. [Maven Publications](https://docs.gradle.org/current/dsl/org.gradle.api.publish.maven.MavenPublication.html) - the representation/configuration of how Gradle should group and publish files in Maven format
+
+Below you can find an example for Maven Publication that can be added to your Gradle script:
 
 ```groovy
 publishing {
@@ -153,7 +154,7 @@ bintray {
 
 * [Example project](https://github.com/bintray/bintray-examples/tree/master/gradle-bintray-plugin-examples/gradle-bintray-plugin-publications-example) for using Maven Publications.
 
-2. Configuration - the following example uses the archives Configuration by applying the java plugin:
+2. [Configurations](https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.Configuration.html) - the following example uses the archives Configuration by applying the java plugin:
 
 ```groovy
 apply plugin: 'java'
@@ -170,10 +171,10 @@ bintray {
 
 * [Example project](https://github.com/bintray/bintray-examples/tree/master/gradle-bintray-plugin-examples/gradle-bintray-plugin-configurations-example) for using Configurations.
 
-
 3. FilesSpec is following [Gradle's copySpec](https://docs.gradle.org/current/javadoc/org/gradle/api/file/CopySpec.html) which is used by the copy task.
 
-Below you can find an example for uploading any arbitrary files using filesSpec that should be referenced from the bintray closure as follows:
+Below you can find an example for uploading arbitrary files from a specific folder ('build/libs') to a directory ('standalone_files/level1') under the build version in bintray using filesSpec.
+filesSpec should be referenced from the bintray closure as follows:
 
 ```groovy
 bintray {
