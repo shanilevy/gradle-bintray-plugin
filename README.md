@@ -127,7 +127,7 @@ bintray {
     key = 'bintray_api_key'
     filesSpec {
 	 from 'build/libs'
-	 into '.'
+	 into 'standalone_files/level1'
     }
 }
 ```
