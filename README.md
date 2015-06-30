@@ -7,9 +7,9 @@ The Gradle Bintray Plugin allows you to publish artifacts to Bintray.
 # Getting Started Using the Plugin
 Please follow the below steps to add the Gradle Bintray Plugin to your Gradle build script.
 
-#### Step 1: [Sign up](https://bintray.com/docs/usermanual/working/working_allaboutjoiningbintraysigningupandloggingin.html) and define user and key for [Bintray](https://bintray.com/)
+#### Step 1: [Sign up](https://bintray.com/docs/usermanual/working/working_allaboutjoiningbintraysigningupandloggingin.html) to [Bintray](https://bintray.com/) and locate the key under 
 
-#### Step 2: Apply the plugin to your Gradle build script. 
+#### Step 2: Apply the plugin to your Gradle build script
 
 To apply the plugin, please add one of the following snippets to your `build.gradle` file:
 
@@ -33,41 +33,44 @@ buildscript {
 }
 apply plugin: 'com.jfrog.bintray'
 ```
+Note: if you have a multi project build make sure to apply the plugin and the plugin configuration to every project which artifacts you wish to publish to bintray.
 
-#### Step 3: Add the "bintray" closure to your `build.gradle` file.
+#### Step 3: Add the `bintray` configuration closure to your `build.gradle` file
 
 Add the below "bintray" closure with your bintray user name and key.
 
 ```groovy
 bintray {
     user = 'bintray_user'
-    key = 'bintray_api_key'	
+    key = 'bintray_api_key'
+    ...
 }
 ```
 
 In case you prefer not to have your Bintray credentials explicitly defined in the script,
-you can store them in environment variables and use them as follows:
+you can store them in environment variables or in external user properties and use them as follows:
 
 ```groovy
 bintray {
     user = System.getenv('BINTRAY_USER')
-    key = System.getenv('BINTRAY_KEY')	
+    key = System.getenv('BINTRAY_KEY')
+    ...
 }
 ```
 
 
-#### Step 4: Add your Bintray package information to the "bintray" closure.
+#### Step 4: Add your Bintray package information to the `bintray` closure
 
 Mandatory parameters:
 
-1. repo - existing repository in bintray to add the artifacts to (for example: 'generic', 'maven' etc).
-2. name - package name.
-3. licenses - your package licenses.
-4. vcsUrl - your VCS URL.
+1. repo - existing repository in bintray to add the artifacts to (for example: 'generic', 'maven' etc)
+2. name - package name
+3. licenses - your package licenses
+4. vcsUrl - your VCS URL
 
 Optional parameters:
 
-1. userOrg – an optional organization name when the repo belongs to one of the user's orgs. If not added will use 'BINTRAY_USER' by default.
+1. userOrg – an optional organization name when the repo belongs to one of the user's orgs. If not added will use 'BINTRAY_USER' by default
 
 ```groovy
 bintray {	
@@ -84,20 +87,20 @@ bintray {
 ```
 
 
-#### Step 5: Add a version information to the "pkg" closure.
+#### Step 5: Add a version information to the `pkg` closure
 
 Mandatory parameters:
 
-1. name - Version name.
+1. name - Version name
 
 Optional parameters:
 
-1. desc - Version description.
+1. desc - Version description
 2. released - Date of the version release. Can accept one of the following formats: 
 	* Date in the format of 'yyyy-MM-dd'T'HH:mm:ss.SSSZZ'
 	* java.util.Date instance
-3. vcsTag - Version control tag name.
-4. attributes - Attributes to be attached to the version.
+3. vcsTag - Version control tag name
+4. attributes - Attributes to be attached to the version
 	
 
 ```groovy
