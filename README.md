@@ -125,7 +125,7 @@ They should however be referenced from inside the bintray closure.
 
 * Please note that Ivy Publications are not supported.
 
-1. [Maven Publications](https://docs.gradle.org/current/dsl/org.gradle.api.publish.maven.MavenPublication.html) - the representation/configuration of how Gradle should group and publish files in Maven format
+1. [Maven Publications](https://docs.gradle.org/current/dsl/org.gradle.api.publish.maven.MavenPublication.html) - the representation/configuration of how Gradle should group and publish files in Maven format. 
 
 Below you can find an example for Maven Publication that can be added to your Gradle script:
 
