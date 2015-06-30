@@ -125,7 +125,7 @@ They should however be referenced from inside the bintray closure.
 
 * Please note that Ivy Publications are not supported.
 
-###### [Maven Publications](https://docs.gradle.org/current/dsl/org.gradle.api.publish.maven.MavenPublication.html) - the representation/configuration of how Gradle should group and publish files in Maven format
+##### [Maven Publications](https://docs.gradle.org/current/dsl/org.gradle.api.publish.maven.MavenPublication.html) - the representation/configuration of how Gradle should group and publish files in Maven format
 
 Below you can find an example for Maven Publication that can be added to your Gradle script:
 
@@ -154,7 +154,7 @@ bintray {
 
 * [Example project](https://github.com/bintray/bintray-examples/tree/master/gradle-bintray-plugin-examples/gradle-bintray-plugin-publications-example) for using Maven Publications.
 
-###### [Configurations](https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.Configuration.html) - the following example uses the archives Configuration by applying the java plugin:
+##### [Configurations](https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.Configuration.html) - the following example uses the archives Configuration by applying the java plugin:
 
 ```groovy
 apply plugin: 'java'
@@ -171,9 +171,10 @@ bintray {
 
 * [Example project](https://github.com/bintray/bintray-examples/tree/master/gradle-bintray-plugin-examples/gradle-bintray-plugin-configurations-example) for using Configurations.
 
-###### FilesSpec is following [Gradle's copySpec](https://docs.gradle.org/current/javadoc/org/gradle/api/file/CopySpec.html) which is used by the copy task.
+##### FilesSpec is following [Gradle's copySpec](https://docs.gradle.org/current/javadoc/org/gradle/api/file/CopySpec.html) which is used by the copy task
 
 Below you can find an example for uploading arbitrary files from a specific folder ('build/libs') to a directory ('standalone_files/level1') under the build version in bintray using filesSpec.
+
 filesSpec should be referenced from the bintray closure as follows:
 
 ```groovy
